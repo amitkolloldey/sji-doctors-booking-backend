@@ -69,7 +69,6 @@
     DB_USERNAME=root
     DB_PASSWORD=
 
-    If you're using a different database setup (such as a different username or password), modify these accordingly.
     Set Up Mailtrap for Email Testing
 
     To test email functionality locally, sign up for a Mailtrap account. Once you have your test credentials, configure the .env file for Mailtrap as follows:
@@ -104,3 +103,11 @@
     Once the server is running, you can access the backend API at http://127.0.0.1:8000.
 
     If you have a react frontend running, it should be able to connect to this API at http://localhost:3000 (or the relevant URL you set in the .env file).
+
+### 9. Update cors if needed in config/cors.php
+
+    'allowed_origins' => [
+        'http://localhost:3000',   // Replace with your frontend domain
+        'http://localhost:3001',
+        'http://localhost:3002',
+    ],
