@@ -38,16 +38,16 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users'
+            'provider' => 'users',
         ],
         'doctor' => [
-            'driver' => 'passport',
-            'provider' => 'doctors'
+            'driver' => 'sanctum', // Updated to use Sanctum for doctor authentication
+            'provider' => 'doctors',
         ],
         'patient' => [
-            'driver' => 'passport',
-            'provider' => 'patients'
-        ]
+            'driver' => 'sanctum', // Updated to use Sanctum for patient authentication
+            'provider' => 'patients',
+        ],
     ],
 
     /*
@@ -70,16 +70,16 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class)
+            'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
         'doctors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Doctor::class
+            'model' => App\Models\Doctor::class,
         ],
         'patients' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Patient::class
-        ]
+            'model' => App\Models\Patient::class,
+        ],
     ],
 
     /*
@@ -104,6 +104,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'doctors' => [
+            'provider' => 'doctors',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'patients' => [
+            'provider' => 'patients',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,

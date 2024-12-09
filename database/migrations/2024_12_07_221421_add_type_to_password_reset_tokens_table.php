@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('oauth_personal_access_clients', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('client_id');
-            $table->timestamps();
+        Schema::table('password_reset_tokens', function (Blueprint $table) {
+            $table->string('type')->nullable()->after('token');
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('oauth_personal_access_clients');
+        Schema::table('password_reset_tokens', function (Blueprint $table) {
+            $table->dropColumn('type');
+        });
     }
 };
