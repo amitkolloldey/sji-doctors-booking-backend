@@ -28,19 +28,19 @@
 
     cp .env.example .env
 
-### 3. Generate the Application Key
+### 3. Install PHP Dependencies
+
+    Run the following command to install PHP dependencies using Composer:
+
+    composer install    
+
+### 4. Generate the Application Key
 
     Generate the application key for your project by running the following command:
 
     php artisan key:generate
 
     This command will automatically generate and set the APP_KEY in your .env file.
-
-### 4. Install PHP Dependencies
-
-    Run the following command to install PHP dependencies using Composer:
-
-    composer install
 
 ###  5. Set Up Your .env File
 
@@ -96,4 +96,4 @@
 
     Once the server is running, you can access the backend API at http://127.0.0.1:8000.
 
-    If you have a frontend running, it should be able to connect to this API at http://localhost:3000 (or the relevant URL you set in the .env file).
+    If you have a react frontend running, it should be able to connect to this API at http://localhost:3000 (or the relevant URL you set in the .env file).
