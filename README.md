@@ -90,19 +90,19 @@
 
     This will apply the migrations and create the necessary tables in your database.
 
-### 8. Run Queue work for email queuing
+### 7. Run Queue work for email queuing
 
     To process queued jobs, you need to run the queue worker. Use the following Artisan command:
     
     php artisan queue:work
 
-### 7. Access the API
+### 8. Access the API
 
     Once the server is running, you can access the backend API at http://127.0.0.1:8000.
 
     If you have a react frontend running, it should be able to connect to this API at http://localhost:3000 (or the relevant URL you set in the .env file).
 
-### 8. Update cors allowed_origins if needed in config/cors.php
+### 9. Update cors allowed_origins if needed in config/cors.php
 
     'allowed_origins' => [
         'http://localhost:3000',   // Replace with your frontend domain
