@@ -44,7 +44,14 @@
 
 ###  5. Set Up Your .env File
 
+    php artisan serve
+
     Open the .env file in the project root and add the following configuration:
+
+    Set the Backend URL
+
+    APP_URL=http://127.0.0.1:8000
+
     Set the Frontend URL
 
     Add the URL for your frontend application (assuming it's running locally on port 3000):
