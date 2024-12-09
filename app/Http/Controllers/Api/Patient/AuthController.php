@@ -44,7 +44,7 @@ class AuthController extends BaseController
         $patient->verification_token = Str::random(60);
         $patient->save();
 
-        Mail::to($patient->email)->send(new PatientEmailVerification($patient));
+        Mail::to($patient->email)->queue(new PatientEmailVerification($patient));
 
         return response()->json([
             'message' => 'Registered successfully! Please check your email for verification.',
@@ -135,7 +135,7 @@ class AuthController extends BaseController
         $patient->verification_token = Str::random(60);
         $patient->save();
 
-        Mail::to($patient->email)->send(new PatientEmailVerification($patient));
+        Mail::to($patient->email)->queue(new PatientEmailVerification($patient));
 
         return response()->json(['message' => 'Verification link has been sent to your email.']);
     }
@@ -164,7 +164,7 @@ class AuthController extends BaseController
         $frontUrl = config('app.front_url');
         $resetUrl = "$frontUrl/patient/reset-password?token=$token&email=" . urlencode($email);
 
-        Mail::to($email)->send(new PatientResetPassword($resetUrl, $patient->name));
+        Mail::to($email)->queue(new PatientResetPassword($resetUrl, $patient->name));
 
         return response()->json(['message' => 'Password reset link sent to your email.'], 200);
     }

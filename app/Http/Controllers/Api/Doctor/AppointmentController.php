@@ -52,10 +52,10 @@ class AppointmentController extends BaseController
         $appointment->load(['doctor', 'patient']);
 
         // Notify the doctor via email about the new appointment
-        Mail::to($appointment->doctor->email)->send(new DoctorAppointment($appointment));
+        Mail::to($appointment->doctor->email)->queue(new DoctorAppointment($appointment));
 
         // Notify the patient via email about the new appointment
-        Mail::to($appointment->patient->email)->send(new PatientAppointment($appointment));
+        Mail::to($appointment->patient->email)->queue(new PatientAppointment($appointment));
 
         return response()->json($appointment, 201);
     }
@@ -87,7 +87,7 @@ class AppointmentController extends BaseController
 
         // Notify the patient about the cancellation
         try {
-            Mail::to($appointment->patient->email)->send(new PatientAppointmentCanceled($appointment));
+            Mail::to($appointment->patient->email)->queue(new PatientAppointmentCanceled($appointment));
         } catch (\Exception $e) {
             \Log::error('Failed to send cancellation email: ' . $e->getMessage());
         }

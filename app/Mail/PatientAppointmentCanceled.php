@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -15,7 +16,7 @@ use Illuminate\Queue\SerializesModels;
  *
  * @package App\Mail
  */
-class PatientAppointmentCanceled extends Mailable
+class PatientAppointmentCanceled extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 

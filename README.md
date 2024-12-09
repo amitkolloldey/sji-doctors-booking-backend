@@ -90,6 +90,12 @@
 
     This will apply the migrations and create the necessary tables in your database.
 
+### 8. Run Queue work for email queuing
+
+    To process queued jobs, you need to run the queue worker. Use the following Artisan command:
+    
+    php artisan queue:work
+
 ### 7. Access the API
 
     Once the server is running, you can access the backend API at http://127.0.0.1:8000.
