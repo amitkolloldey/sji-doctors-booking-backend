@@ -104,7 +104,7 @@
 
     If you have a react frontend running, it should be able to connect to this API at http://localhost:3000 (or the relevant URL you set in the .env file).
 
-### 9. Update cors if needed in config/cors.php
+### 9. Update cors allowed_origins if needed in config/cors.php
 
     'allowed_origins' => [
         'http://localhost:3000',   // Replace with your frontend domain
